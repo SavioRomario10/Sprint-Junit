@@ -9,7 +9,6 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 
 import io.locadora.demo.entity.CarroEntity;
-import io.locadora.demo.repository.CarroRepository;
 
 import static org.junit.jupiter.api.Assertions.*;
 
