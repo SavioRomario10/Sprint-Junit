@@ -2,7 +2,7 @@ package io.locadora.demo.model;
 
 import org.junit.jupiter.api.Test;
 
-import io.locadora.demo.exceptions.ReservaInvalidaException;
+import io.locadora.demo.exception.ReservaInvalidaException;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

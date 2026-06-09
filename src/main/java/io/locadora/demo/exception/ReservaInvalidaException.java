@@ -1,4 +1,4 @@
-package io.locadora.demo.exceptions;
+package io.locadora.demo.exception;
 
 public class ReservaInvalidaException extends RuntimeException {
   public ReservaInvalidaException(String message) {
