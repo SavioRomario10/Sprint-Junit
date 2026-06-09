@@ -1,4 +1,4 @@
-package io.locadora.model;
+package io.locadora.demo.model;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;

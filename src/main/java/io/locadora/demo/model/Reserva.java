@@ -1,6 +1,6 @@
-package io.locadora.model;
+package io.locadora.demo.model;
 
-import io.locadora.exception.ReservaInvalidaException;
+import io.locadora.demo.exceptions.ReservaInvalidaException;
 
 public class Reserva {
 

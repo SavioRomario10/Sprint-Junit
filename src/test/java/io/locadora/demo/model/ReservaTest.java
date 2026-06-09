@@ -1,10 +1,11 @@
-package io.locadora.model;
+package io.locadora.demo.model;
 
 import org.junit.jupiter.api.Test;
+
+import io.locadora.demo.exceptions.ReservaInvalidaException;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-
-import io.locadora.exception.ReservaInvalidaException;
 
 import static org.assertj.core.api.Assertions.*;
 

@@ -1,4 +1,4 @@
-package io.locadora.model;
+package io.locadora.demo.model;
 
 public class Carro {
 
