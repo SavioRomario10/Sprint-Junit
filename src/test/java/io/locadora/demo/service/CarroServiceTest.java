@@ -1,5 +1,6 @@
 package io.locadora.demo.service;
 
+import java.util.List;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -78,5 +79,58 @@ public class CarroServiceTest {
 
     assertThat(erro).isInstanceOf(EntityNotFoundException.class);
     verify(repository, never()).save(any());
+  }
+
+  @Test
+  void deveDeletarUmCarro(){
+    var carro = new CarroEntity("Modelo Y", 150.0, 2021);
+    carro.setId(1L);
+
+    when(repository.findById(1L)).thenReturn(Optional.of(carro));
+
+    service.deletar(1L);
+
+    verify(repository, times(1)).delete(any(CarroEntity.class));
+  }
+  @Test
+  void deveDarErroDeletarUmCarroInexistente(){
+    var carro = new CarroEntity("Modelo Y", 150.0, 2021);
+    carro.setId(1L);
+
+    when(repository.findById(any())).thenReturn(Optional.empty());
+
+    var erro = catchThrowable(() -> service.deletar(1L));
+
+    assertThat(erro).isInstanceOf(EntityNotFoundException.class);
+
+    verify(repository, never()).delete(any());
+  }
+
+  @Test
+  void deveBuscarOsCarros(){
+    var carro = new CarroEntity("Modelo Y", 150.0, 2021);
+    carro.setId(1L);
+
+    when(repository.findById(any())).thenReturn(Optional.of(carro));
+
+    var carroEncontrado = service.findById(1L);
+
+    assertThat(carroEncontrado.getModelo()).isEqualTo("Modelo Y");
+  }
+
+  @Test
+  void deveBuscarTodosCarros(){
+    var carro1 = new CarroEntity(1l, "Test 1", 100, 2021);
+    var carro2 = new CarroEntity(2l, "Test 2", 150, 2022);
+
+    var lista = List.of(carro1, carro2);
+
+    when(repository.findAll()).thenReturn(lista);
+
+    var carrosEncontrados = service.findAll();
+
+    assertThat(carrosEncontrados.size()).isEqualTo(2);
+    verify(repository, times(1)).findAll();
+    verifyNoMoreInteractions(repository);
   }
 }
